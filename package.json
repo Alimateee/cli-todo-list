@@ -1,0 +1,26 @@
+{
+  "name": "todo_cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "todo_cli" : "main.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "inquirer": "^12.6.0",
+    "pkg": "^5.8.1"
+  },
+  "pkg": {
+    "scripts": "main.js",
+    "targets": [
+      "node18-win-x64"
+    ],
+    "outputPath": "dist"
+  }
+}
