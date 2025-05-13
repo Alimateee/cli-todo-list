@@ -1,0 +1,3 @@
+for test file that i put it to my autostart in .config directory
+
+gnome-terminal -- bash -c "node/python/.etc <path of your code> --yourflag; exec bash"

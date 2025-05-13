@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const path = require('path');
 const os = require('os')
 // adding json task file
-let homeDir = path.join(os.homedir() , '.todo-cli')
+let homeDir = path.join(os.homedir() , '.todo-cli-lin')
 let JSON_file = path.join(homeDir , 'task.json');
 
 
@@ -76,11 +76,11 @@ const addTask = async () =>  {
 // async function that show the todayTasks
 const showTodayTasks = async () => {
     let today = new Date().toLocaleDateString().split('T')[0];
-    const tasks = loadTasks();
+    const tasks = await loadTasks();
     if(tasks[today] && tasks[today].length > 0) {
         console.log(` your tasks in date ${today} is : \n`);
         tasks[today].forEach((item , index) => {
-            console.log(`${index + 1} , ${item}`);
+            console.log(`${index + 1} :  ${item}`);
         })
     }
     else 
@@ -99,12 +99,11 @@ async function mainFunction() {
             {
                 type : 'list',
                 name : 'action',
-                message : 'what do you do today : ',
+                message : `hello ${os.hostname} , add your task and enjoy : `,
                 choices : ['add new task' , 'show today tasks' , 'show All tasks' , 'exit']
             }
         ]
     )
-
     if(answer.action === 'add new task') {
         await addTask();
         mainFunction()
@@ -126,12 +125,6 @@ async function mainFunction() {
 /// run the program 
 if(process.argv[2] === '--show-today') {
     showTodayTasks()
-    .then(data => {
-        console.log(data);
-    })
-    .catch(err => console.log(err))
 }
-else 
-    {
-        mainFunction()
-    }
+else
+    mainFunction();
